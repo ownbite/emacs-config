@@ -1,0 +1,6 @@
+# Ignore temporary files in emacs
+*~
+\#*\#
+
+# elpa packages
+/elpa/
