@@ -44,12 +44,22 @@
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 #+END_SRC
 * Utility functions
+** Which key
 
 #+BEGIN_SRC emacs-lisp
-(use-package which-key
-	:ensure t 
-	:config
-	(which-key-mode))
+  (use-package which-key
+	  :ensure t 
+	  :config
+	  (which-key-mode))
+#+END_SRC
+
+** Restart Emacs
+
+#+BEGIN_SRC emacs-lisp
+  (use-package restart-emacs 
+	  :ensure t
+	  :init
+	  (setq restart-emacs-restore-frames t))
 #+END_SRC
 
 * Spelling
@@ -100,6 +110,12 @@ abort completely with `C-g'."
 
 (setq save-abbrevs 'silently)
 (setq-default abbrev-mode t)
+#+END_SRC
+** Configure to get synonyms
+
+#+BEGIN_SRC emacs-lisp
+(use-package synosaurus
+	:ensure t)
 #+END_SRC
 
 * Keyboard mapping
