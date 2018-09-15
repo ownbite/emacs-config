@@ -7,6 +7,7 @@
 #+END_SRC
 
 * Package management
+  SCHEDULED: <2018-09-15 Sat>
 
 #+BEGIN_SRC emacs-lisp
 (require 'package)
@@ -32,17 +33,20 @@
 
 * Personal preferences
 ** Sound
+
 #+BEGIN_SRC emacs-lisp
 (setq ring-bell-function 'ignore)
 #+END_SRC
 
 ** UI
+
 #+BEGIN_SRC emacs-lisp
 (use-package org-bullets
   :ensure t
   :config
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 #+END_SRC
+
 * Utility functions
 ** Which key
 
@@ -116,12 +120,16 @@ abort completely with `C-g'."
 #+BEGIN_SRC emacs-lisp
 (use-package synosaurus
 	:ensure t)
+
+(require 'bind-key)
+(bind-key* "C-c C-s l" 'synosaurus-lookup)
+(bind-key* "C-c C-s r" 'synosaurus-choose-and-replace)
 #+END_SRC
 
 * Keyboard mapping
+** Set command key as meta key
 
 #+BEGIN_SRC emacs-lisp
-;; Set the command key as meta instead of the option key
 (setq mac-option-modifier nil
       mac-command-modifier 'meta
       x-select-enable-clipboard t)
@@ -145,4 +153,5 @@ abort completely with `C-g'."
  ;; If there is more than one, they won't work right.
  )
 #+END_SRC
+
 
