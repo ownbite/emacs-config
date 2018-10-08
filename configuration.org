@@ -4,10 +4,10 @@
 
 #+BEGIN_SRC emacs-lisp
    (setq inhibit-startup-message t)
+   (require 'subr-x)
 #+END_SRC
 
-* Package management
-  SCHEDULED: <2018-09-15 Sat>
+* Package manager
 
 #+BEGIN_SRC emacs-lisp
 (require 'package)
@@ -55,6 +55,18 @@
     :ensure t
     :config
     (global-set-key (kbd "<f7>") 'evil-mode))
+#+END_SRC
+
+* Virtual environments
+** Virtualenvwrapper
+
+#+BEGIN_SRC emacs-lisp
+(use-package virtualenvwrapper
+    :ensure t
+    :config
+    (venv-initialize-interactive-shells) ;; if you want interactive shell support
+    (venv-initialize-eshell)
+    (setq venv-location "~/.virtualenvs"))
 #+END_SRC
 
 * Utility 
