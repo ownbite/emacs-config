@@ -34,18 +34,32 @@
 * Personal preferences
 ** Sound
 
-#+BEGIN_SRC emacs-lisp
-(setq ring-bell-function 'ignore)
-#+END_SRC
+    #+BEGIN_SRC emacs-lisp
+	(setq ring-bell-function 'ignore)
+    #+END_SRC
 
 ** UI
 
-#+BEGIN_SRC emacs-lisp
-(use-package org-bullets
-  :ensure t
-  :config
-  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
-#+END_SRC
+    #+BEGIN_SRC emacs-lisp
+    (unless (file-expand-wildcards (concat package-user-dir "/org-[0-9]*"))
+	(package-install (elt (cdr (assoc 'org package-archive-contents)) 0)))
+    (require 'org)
+
+    (use-package org-bullets
+	:ensure t
+	:config
+	(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+    #+END_SRC
+
+** Reveal - A tool for making presentations
+
+   #+BEGIN_SRC emacs-lisp
+   (use-package ox-reveal
+	:load-path "/Users/Ownbite/.emacs.d/manually-installed-packages/org-reveal"
+	:config
+	(setq org-reveal-root "file:///Users/Ownbite/.emacs.d/manually-installed-packages/reveal.js")
+	(setq org-reveal-title-slide nil))
+   #+END_SRC
 
 * Vim
 ** Evil mode
